@@ -42,12 +42,9 @@ l'utilisation de Airflow, permet à la fois d'orchestrer les pipelines, mais aus
  -- Task Failures ..etc
 Il est aussi possible d'utiliser un grafana pour monter un dashboard de santé des pipelines
 
-### Étape 6
+### Étape 6 et 7
 
 mettre en place un worflow MLOps qui permet d'automatiser le cycle de vie du modèle de recommandations.
-Le modèle se connecter sur la zone gold pour récupérer les datasets préparés et génère les recommandations qui doivent être stockées
+Le modèle se connecter sur la zone gold pour récupérer les datasets préparés en amont, et génère les recommandations qui doivent être stockées
 On peut utiliser une platforme ML comme Azure ML pour gérer le cycle de vie complet: création ou chargement des modèle, expérimentations, déploiement du modèle, exposition du modèle et surveillence du modèle
-
-### Étape 7
-
-_votre réponse ici_
+Il est possible de mettre un workflow qui permet de réentrainer automatiquement le modèle en se basant sur les metrics surveillées
