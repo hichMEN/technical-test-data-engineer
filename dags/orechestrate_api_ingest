@@ -1,0 +1,32 @@
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+
+# Define default arguments
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2024, 10, 6),
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+# Define the DAG
+dag = DAG(
+    'pyspark_etl',
+    default_args=default_args,
+    description='ingest API data daily',
+    schedule_interval=timedelta(days=1),
+)
+
+# Define the task
+run_etl = BashOperator(
+    task_id='run_pyspark_etl',
+    bash_command='python /src/etl/main.py --config_path /src/etl/etl_config.yaml',
+    dag=dag,
+)
+
+# Set the task dependencies
+run_etl

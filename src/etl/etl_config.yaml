@@ -1,0 +1,20 @@
+source_uri: http://localhost:8000/
+gold_zone: /data/gold/
+sources:
+  - endpoint: users
+    delta_path: /data/bronze/users
+    merge_condition: target.id = source.id AND target.is_current = True
+    is_partitionned: False
+    partition_id: None
+
+  - endpoint: tracks
+    delta_path: /data/bronze/tracks
+    merge_condition: target.id = source.id AND target.is_current = True
+    is_partitionned: False
+    partition_id: None
+
+  - endpoint: listen_history
+    delta_path: /data/bronze/listen_history
+    merge_condition: target.user_id = source.user_id AND target.is_current = True
+    is_partitionned: True
+    partition_id: user_id   

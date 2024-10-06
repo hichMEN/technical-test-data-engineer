@@ -3,3 +3,7 @@ fastapi
 uvicorn
 fastapi_pagination
 pytest
+pyyaml
+requests
+pyspark
+delta-spark
